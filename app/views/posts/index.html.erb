@@ -1,0 +1,49 @@
+<div id="page-content">
+  <h5>
+    <%= link_to 'click here to see total students list', controller: 'students' %>
+  </h5>
+  <h3 class="text-center mt-4">Listing all posts</h3>
+
+<body style="background-color:whitesmoke;">
+
+<p id="notice"><%= notice %></p>
+
+<table>
+  <tbody>
+      <div class="container">
+    <% @posts.each do |post| %>
+      <div class="row justify-content-md-center">
+        <div class="col-16 mt-4">
+          <div class="card text-center shadow mb-5 bg-white rounded">
+            <div class="card-header font-italic">
+              Demo Application
+            </div>
+            <div class="card-body">
+              <h5 class="card-string"><%= link_to post.name, post_path(post), class: "text-success" %></h5>
+              <h5 class="card-integer"><%= link_to post.age, post_path(post), class: "text-success" %></h5>
+              <h5 class="card-string"><%= link_to post.company, post_path(post), class: "text-success" %></h5>
+              
+              <h5 class="card-string"><%= link_to post.email, post_path(post), class: "text-success" %></h5>
+              <%= link_to "Full Profile", post_path(post), class: "btn btn-outline-success" %>
+              <%= link_to "Edit", edit_post_path(post), class: "btn btn-outline-info" %>
+              <%= link_to "Delete", post_path(post), class: "btn btn-outline-danger", method: :delete, data: {confirm: "Are you sure?"} %>
+            </div>
+              <p>
+                <%= link_to 'Create new Post', new_post_path %>
+              </p>
+            <div class="card-footer text-muted">
+              <small>Created <%= time_ago_in_words(post.created_at) %> ago, 
+              edited <%= time_ago_in_words(post.updated_at) %> ago</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+    </div>
+  </div> 
+  </tbody>
+</table>
+
+</body>
+ 
+

@@ -1,0 +1,39 @@
+<body style="background-color:navajowhite;">
+  <div id="page-content">
+    <h2 class="text-center mt-4"><%= @post.name %></h2>
+    <div class="container">
+      <div class="row justify-content-md-center">
+        <div class="col-8 mt-4">
+          <div class="card text-center shadow mb-5 bg-white rounded">
+            <div class="card-header font-italic">
+              by Demo Application
+            </div>
+            <div class="card-body">
+              <div class="card-text text-center"><%= image_tag @post.image.url(:thumb) %></div>
+              <div class="card-text text-left"><%= simple_format(@post.gender) %></div>
+              <div class="card-text text-left"><%= simple_format(@post.company) %></div>
+              <div class="card-text text-left"><%= simple_format(@post.skills) %></div>
+
+              <div class="card-text text-left"><%= simple_format(@post.email) %></div>
+              <div class="card-text text-left"><%= simple_format(@post.address) %></div>
+              
+              <div class="card-text text-left"><%= simple_format(@post.state) %></div>
+              <div class="card-text text-left"><%= simple_format(@post.country) %></div>
+              <div class="card-text text-left"><%= simple_format(@post.bio) %></div>
+              <%= link_to "Edit", edit_post_path(@post), class: "btn btn-outline-info" %>
+              <%= link_to "Delete", post_path(@post), class: "btn btn-outline-danger", method: :delete, data: {confirm: "Are you sure?"} %>
+            </div>
+            <div class="card-footer text-muted">
+              <small>Created <%= time_ago_in_words(@post.created_at) %> ago, 
+              edited <%= time_ago_in_words(@post.updated_at) %> ago</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <%= link_to 'Edit', edit_post_path(@post) %> |
+  <%= link_to 'Back', posts_path %>
+
+</body>
